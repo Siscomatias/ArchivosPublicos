@@ -1,0 +1,443 @@
+{
+  "uuid": "e1e3b6ab-1cfb-470b-81d5-840951b8c7c5",
+  "lastMigration": 19,
+  "name": "MIE",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8c806583-af94-4942-852a-1d8ddefd3c5e",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "tutorial",
+      "responses": [
+        {
+          "uuid": "3b5170fb-e15e-4e04-a437-51f5e9ffda86",
+          "body": "[\r\n  {{# repeat 5}}\r\n  {\r\n    \"title\": \"Tutorial {{@index}}\",\r\n    \"tags\": \"{{someOf (array 'Getting started' 'https' 'proxy mode' 'headers' 'templating') 1 3}}\"\r\n  }\r\n  {{/ repeat}}\r\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "e7f6f2c0-53f1-49d9-8176-b8040a413396",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "test",
+      "responses": [
+        {
+          "uuid": "598a4d4e-f474-4b62-9cb5-037c057c1062",
+          "body": "{\n  \"test\": \"{{body 'idIncidente' 0}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "7e8c42c5-9ee5-4c1a-8c12-51b69d81973f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "idIncidente",
+              "value": "0",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "idTest",
+              "value": "",
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bf117783-5eca-4418-958b-7b6a11740432",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "DenunciaObjetoTecnicoFaltante_MIEXXI",
+      "responses": [
+        {
+          "uuid": "14bd8b9d-8e87-4e3e-88a7-5c7f50ee9ac2",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"X\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "4be91265-9749-44f4-a28d-7bd4dd58d9cd",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"\",\n    \"TYPE\": \"E\",\n    \"ID\": \"{{faker 'datatype.number' min=1 max=25000}}\",\n    \"NUMBER\": {{faker 'datatype.number' min=1 max=25000}},\n    \"MESSAGE\":\"Error\",\n    \"MESSAGE_V1\":\"Test 1\",\n    \"MESSAGE_V2\":\"Test 2\",\n    \"MESSAGE_V3\":\"Test 3\",\n    \"MESSAGE_V4\":\"Test 4\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "^.{41,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "^.{301,}$",
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "1e3f4550-bf44-468c-9a36-416e66b57329",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"\",\n    \"TYPE\": \"E\",\n    \"ID\": \"{{faker 'datatype.number' min=1 max=25000}}\",\n    \"NUMBER\": {{faker 'datatype.number' min=1 max=25000}},\n    \"MESSAGE\":\"Error\",\n    \"MESSAGE_V1\":\"Test 1\",\n    \"MESSAGE_V2\":\"Test 2\",\n    \"MESSAGE_V3\":\"Test 3\",\n    \"MESSAGE_V4\":\"Test 4\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "90b74c7b-39d1-4bb0-8245-7e7c1b2902c3",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "ConfirmarAviso_MIEXXI",
+      "responses": [
+        {
+          "uuid": "74b5f650-b537-4539-9c96-64d45be10d41",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"X\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "21c18334-e7e3-45f2-8cff-1f7fa0e0cf62",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"\",\n    \"TYPE\": \"E\",\n    \"ID\": \"{{faker 'datatype.number' min=1 max=25000}}\",\n    \"NUMBER\": {{faker 'datatype.number' min=1 max=25000}},\n    \"MESSAGE\":\"Error\",\n    \"MESSAGE_V1\":\"Test 1\",\n    \"MESSAGE_V2\":\"Test 2\",\n    \"MESSAGE_V3\":\"Test 3\",\n    \"MESSAGE_V4\":\"Test 4\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "",
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_2",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_D_QNUM",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_R_QNUM",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_O_QNUM_1",
+              "value": "^.{13,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_NEGOCIO",
+              "value": "^.{41,}$",
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "IM_DFTXT",
+              "value": "^.{301,}$",
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "9b2232cc-8463-4b7d-b9cc-725866106579",
+          "body": "{\n  \"EX_BAPIRETURN\": \n  {\n    \"EX_RESULT\": \"\",\n    \"TYPE\": \"E\",\n    \"ID\": \"{{faker 'datatype.number' min=1 max=25000}}\",\n    \"NUMBER\": {{faker 'datatype.number' min=1 max=25000}},\n    \"MESSAGE\":\"Error\",\n    \"MESSAGE_V1\":\"Test 1\",\n    \"MESSAGE_V2\":\"Test 2\",\n    \"MESSAGE_V3\":\"Test 3\",\n    \"MESSAGE_V4\":\"Test 4\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
